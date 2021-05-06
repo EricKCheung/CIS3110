@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel = "stylesheet" href = "Styles.css">
+</head>
+<body>
+  <h1>Input Page</h1>
+    
+  <form>
+    <label for = "numbers">Enter a number:</label>
+    <input type = "numbers" id = "number" name = "numbers" form = "form1"><br><br>
+
+    <label for = "text">Enter text:</label>
+    <input type = "text" id = "text" name = "text" form = "form1"><br><br>
+  </form>
+    
+  <div>
+    <input type = "submit" onclick = "showInput(); checkNumber();">
+  </div><br>
+  
+  <div>
+    Your input:
+    <p id = "numberCheck"></p>
+  </div>
+
+    
+  <p id = "form1"></p>
+  
+</body>
+
+<script>
+  function showInput() {
+    document.getElementById('form1').innerHTML = 
+        document.getElementById("number").value + " " + document.getElementById("text").value;
+    console.log(document.getElementById("number").value + " " + document.getElementById("text").value);
+  }
+    
+  function checkNumber() {
+    if(document.getElementById("number").value < 10) {
+      var str1 = "Your number was less than 10.";
+      var result1 = str1.link("LessThan.html");
+      document.getElementById("numberCheck").innerHTML = result1;
+    }
+    else{
+      var str2 = "Your number was greater than 10.";
+      var result2 = str2.link("GreaterThan.html");
+      document.getElementById("numberCheck").innerHTML = result2;
+      }
+  }
+</script>
+
+</html>

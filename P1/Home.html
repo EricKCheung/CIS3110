@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel = "stylesheet" href = "Styles.css">
+</head>
+
+<body onload = "checkCookie()">
+  <h1>Landing Page</h1>
+    <div class = "dropdown">
+      <button onclick = "myFunction()" class="dropbtn">Menu</button>
+        <div id = "myDropdown" class="dropdown-content">
+        <a href = "../P2/Authentication.html">Authentication</a>
+        <a href = "Inputs.html">Inputs</a>
+        <a href = "LessThan.html">Less Than</a>
+        <a href = "GreaterThan.html">Greater Than</a>
+      </div>
+    </div>
+</body>
+
+<script>
+  function myFunction(){
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  window.onclick = function(event){
+    if (!event.target.matches('.dropbtn')){
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++){
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')){
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  
+  function getCookie(cname){
+    var name = cname + "=";
+    console.log("document cookie list is" + document.cookie);
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      console.log("c at " + i + ":" + ca[i])
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  function checkCookie(){
+    var authenticated = getCookie("auth");
+    if (authenticated != "") {
+      alert("Welcome back");
+    } 
+  }
+</script>
+
+</html>
