@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel = "stylesheet" href = "../P1/Styles.css">
+</head>
+
+<body onload = "checkCookie()">
+  <h1>Authentication</h1>
+  
+  <form>
+    <label for = "text">Username:</label>
+    <input type = "text" id = "username" name = "username" required><br><br>
+
+    <label for = "text">Password:</label>
+    <input type = "text" id = "password" name = "password" required><br><br>
+  </form>
+  
+  <div>
+    <input type = "submit" onclick = "checkEmpty()"></input>
+  </div>
+  
+  
+</body>
+
+<script>
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  function getCookie(cname){
+    var name = cname + "=";
+    console.log("document cookie list is" + document.cookie);
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      console.log("c at " + i + ":" + ca[i])
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function checkCookie(){
+    var authenticated = getCookie("auth");
+    if(authenticated != ""){
+      window.location.href = "../P1/Home.html";
+    }
+  }
+  function checkEmpty(){
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if(username == "" || password == ""){
+        alert("Please fill all forms.");
+      }
+    else{
+      console.log("Authenticated");
+      setCookie("auth", "true", "1");
+      console.log(document.cookie);
+      window.location.href = "../P1/Home.html";
+    }
+  }
+  
+
+</script>
+
+</html>
