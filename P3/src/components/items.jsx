@@ -69,19 +69,19 @@ class Items extends Component {
  
   render(){
     return (
-      <table className="table">
+      <table className = "table">
         <tbody>
           {this.state.items.map((item, index) => (
-            <tr key={item.id}>
-              <Item index={index+1} item={item}
-                fooDelete={this.handleDelete} fooDoneDone={this.handleDone} />
+            <tr key = {item.id}>
+              <Item index = {index+1} item = {item}
+                fooDelete = {this.handleDelete} fooDoneDone = {this.handleDone} />
             </tr>
           ))}
           
           <tr>
-            <td colSpan="4" className="text-center">
-              <DataManager foodataManager={this.addNewItem}
-                dataManagerValue={this.state.dataManagerValue} />
+            <td colSpan = "4" className = "text-center">
+              <DataManager foodataManager = {this.addNewItem}
+                dataManagerValue = {this.state.dataManagerValue} />
             </td>
           </tr>
         </tbody>
